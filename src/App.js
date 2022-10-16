@@ -34,7 +34,7 @@ function App() {
     {},
     React.createElement("h2", {}, "Let's get started"),
     React.createElement(Expenses, { item: expenses })
-  );
+  ); // first, Element tag in string, second attribute if available, content inside the element tag
 
   // return (
   //   <div>
