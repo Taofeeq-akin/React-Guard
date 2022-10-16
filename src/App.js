@@ -1,3 +1,5 @@
+import React from "react";
+
 import logo from "./logo.svg";
 import "./App.css";
 import ExpenseItem from "./components/ExpenseItem";
@@ -26,12 +28,20 @@ function App() {
     },
   ];
 
-  return (
-    <div>
-      <h2>Let's get started</h2>
-      <Expenses item={expenses} />
-    </div>
+  // Under hood before JSX is introduce, firstly need to import react to our file
+  return React.createElement(
+    "div",
+    {},
+    React.createElement("h2", {}, "Let's get started"),
+    React.createElement(Expenses, { item: expenses })
   );
+
+  // return (
+  //   <div>
+  //     <h2>Let's get started</h2>
+  //     <Expenses item={expenses} />
+  //   </div>
+  // );
 }
 
 export default App;
