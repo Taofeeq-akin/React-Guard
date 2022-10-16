@@ -2,8 +2,8 @@ import React from "react";
 
 import logo from "./logo.svg";
 import "./App.css";
-import ExpenseItem from "./components/ExpenseItem";
-import Expenses from "./components/Expenses";
+import ExpenseItem from "./components/Expenses/ExpenseItem";
+import Expenses from "./components/Expenses/Expenses";
 
 function App() {
   const expenses = [
@@ -28,20 +28,22 @@ function App() {
     },
   ];
 
-  // Under hood before JSX is introduce, firstly need to import react to our file
+  /*
+  // Under hood before JSX is introduce, firstly need to import react to our file (Behind the scene)
   return React.createElement(
     "div",
     {},
     React.createElement("h2", {}, "Let's get started"),
     React.createElement(Expenses, { item: expenses })
   ); // first, Element tag in string, second attribute if available, content inside the element tag
+*/
 
-  // return (
-  //   <div>
-  //     <h2>Let's get started</h2>
-  //     <Expenses item={expenses} />
-  //   </div>
-  // );
+  return (
+    <div>
+      <h2>Let's get started</h2>
+      <Expenses item={expenses} />
+    </div>
+  );
 }
 
 export default App;
