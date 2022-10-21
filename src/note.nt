@@ -1,0 +1,2 @@
+// Using built-in-state concept
+1) useState function: this a react hook that allows us to define value as state where changes to these values should reflect
