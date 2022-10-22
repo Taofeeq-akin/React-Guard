@@ -9,7 +9,6 @@ function ExpenseItem(props) {
   const [title, setTitle] = useState(props.title);
 
   // let title = props.title;
-
   const clickHandler = () => {
     // title = "Polish";
     // console.log(title);
