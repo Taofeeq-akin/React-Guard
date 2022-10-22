@@ -3,13 +3,17 @@ import React from "react";
 import "./NewExpense.css";
 
 const NewExpense = () => {
+  const inputClickHandler = (event) => {
+    console.log(event.target.value);
+  };
+
   return (
     <div className="new-expense">
       <form>
         <div className="new-expense__controls">
           <div className="new-expense__control">
             <label>Title</label>
-            <input type="text" />
+            <input type="text" onChange={inputClickHandler} />
           </div>
           <div className="new-expense__control">
             <label>Amount</label>
