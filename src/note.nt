@@ -2,3 +2,6 @@
 1) useState function: this a react hook that allows us to define value as state where changes to these values should reflect
 
 whenever state is updated and depends on the previous state we should use alternative form Usinga function in setinput that will return.
+
+//////////
+Two way binding allows us to gather inputs in form and also set it to the value and also to make clearing after entered poddible
