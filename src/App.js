@@ -28,6 +28,10 @@ function App() {
     },
   ];
 
+  const AddExpenseHandler = (expense) => {
+    console.log(expense);
+  };
+
   /*
   // Under hood before JSX is introduce, firstly need to import react to our file (Behind the scene)
   return React.createElement(
@@ -40,7 +44,7 @@ function App() {
 
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={AddExpenseHandler} />
       <Expenses item={expenses} />
     </div>
   );
