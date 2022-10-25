@@ -17,7 +17,7 @@ const FormExpense = (props) => {
     // setUserInput({
     //   ...userInput,
     //   enteredTitle: event.target.value,
-    // });
+    // }); //Snapshot my get not if using this
 
     // setUserInput((prevState) => {
     //   return { ...prevState, enteredTitle: event.target.value };
