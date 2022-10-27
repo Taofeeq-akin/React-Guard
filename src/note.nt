@@ -5,3 +5,9 @@ whenever state is updated and depends on the previous state we should use altern
 
 //////////
 Two way binding allows us to gather inputs in form and also set it to the value and also to make clearing after entered poddible
+
+//////////////
+The following can be used for Conditional content in JSX:
+1) Using ternary operation
+2) using && (if first condition is true) will return the last part of the operation 
+3) Setting variable and using if statement depending on the variable 

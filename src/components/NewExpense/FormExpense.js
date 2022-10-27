@@ -62,7 +62,9 @@ const FormExpense = (props) => {
     setEnteredDate("");
   };
 
-  return (
+  const [editFormOpen, setEditFormOpen] = useState(false);
+
+  const editForm = (
     <form onSubmit={submitHAndler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
@@ -95,10 +97,23 @@ const FormExpense = (props) => {
         </div>
         <div className="new-expense__actions">
           <button type="submit">Add Expense</button>
+          <button type="button" onClick={() => setEditFormOpen(false)}>
+            Cancel
+          </button>
         </div>
       </div>
     </form>
   );
+
+  const newExpenseBtn = (
+    <div>
+      <button type=" button" onClick={() => setEditFormOpen(true)}>
+        Add new expense
+      </button>
+    </div>
+  );
+
+  return <>{editFormOpen ? editForm : newExpenseBtn}</>;
 };
 
 export default FormExpense;
