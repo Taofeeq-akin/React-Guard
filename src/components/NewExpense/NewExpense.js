@@ -15,7 +15,7 @@ const NewExpense = (props) => {
   return (
     <div className="new-expense">
       <FormExpense onSaveExpense={saveExpenseDataHandler} />
-    </div>
+    </div> // onSaveExpenses here is a function which will be called on FormExpense (Cus we moving data from child to parent)
   );
 };
 

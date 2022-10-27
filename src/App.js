@@ -34,7 +34,7 @@ function App() {
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
     });
-    // expenses.push(expense);
+    // console.log(expense);
   };
 
   /*
