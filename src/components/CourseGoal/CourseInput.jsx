@@ -8,7 +8,16 @@ const CourseInput = (props) => {
 
   const addUserHandler = (event) => {
     event.preventDefault();
+    // Input validation
+    if (enterdUsername.trim().length === 0 || enterdAge.trim().length === 0) {
+      return;
+    }
+    if (+enterdAge < 1) {
+      return;
+    }
+
     console.log(enterdAge, enterdUsername);
+    // Clear Input
     setEnterdUsername("");
     setEnterdAge("");
   };
@@ -18,7 +27,7 @@ const CourseInput = (props) => {
   };
 
   const ageChangeHandler = (event) => {
-    setEnterdAge(event.target.value );
+    setEnterdAge(event.target.value);
   };
 
   return (
