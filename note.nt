@@ -16,3 +16,6 @@ The following can be used for Conditional content in JSX:
 Avoiding using same class name or id twice
 1) Using a package: styled components
 2) CSS modules
+
+//////////
+Using react developer tools: Extensuin fir debugging
