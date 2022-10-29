@@ -1,7 +1,7 @@
 import styles from "./CourseInput.module.css";
 import Button from "../UI/Button";
 
-const CourseInput = () => {
+const CourseInput = (props) => {
   const addUserHandler = (event) => {
     event.preventDefault();
   };
@@ -16,7 +16,7 @@ const CourseInput = () => {
         <label htmlFor="age">Age (Years) </label>
         <input type="number" id="age" />
       </div>
-      <Button />
+      <Button type="submit">Add User</Button>
     </form>
   );
 };
