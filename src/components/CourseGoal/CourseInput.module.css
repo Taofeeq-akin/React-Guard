@@ -1,0 +1,24 @@
+.form_control {
+  margin: 0.7rem 1rem 0.3rem 1rem;
+}
+
+.form_control label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.form_control input {
+  width: 100%;
+  display: block;
+  border: 1px solid #ccc;
+  font: inherit;
+  line-height: 1.5rem;
+  padding: 0 0.25rem;
+}
+
+.form-control input:focus {
+  outline: none;
+  border-color: #8b005d;
+}
