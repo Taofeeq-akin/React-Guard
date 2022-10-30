@@ -10,7 +10,8 @@ function App() {
       <div className={styles.user_details}>
         <CourseInput />
       </div>
-      <CourseList />
+      {/* need to put in array cus we want to map through */}
+      <CourseList users={[]} />
     </div>
   );
 }

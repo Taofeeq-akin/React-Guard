@@ -1,8 +1,18 @@
-.goal_list {
-    list-style: none;
-    margin: 0 auto;
-    padding: 1rem;
-    background-color: #fff;
-    width: 40rem;
-    border-radius: 12px;
-  }
+.users {
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 36.5rem;
+  background-color: #fff;
+  border-radius: 12px;
+}
+
+.users ul {
+  list-style: none;
+  padding: 1rem;
+}
+
+.users li {
+  border: 1px solid #ccc;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
