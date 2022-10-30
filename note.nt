@@ -11,3 +11,11 @@ The following can be used for Conditional content in JSX:
 1) Using ternary operation
 2) using && (if first condition is true) will return the last part of the operation 
 3) Setting variable and using if statement depending on the variable 
+
+///////////
+Avoiding using same class name or id twice
+1) Using a package: styled components
+2) CSS modules
+
+//////////
+Using react developer tools: Extensuin f0r debugging

@@ -1,0 +1,6 @@
+.user_list {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  font-weight: 600;
+}
