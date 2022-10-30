@@ -16,7 +16,9 @@ const CourseInput = (props) => {
       return;
     }
 
-    console.log(enterdAge, enterdUsername);
+    // will move username and age to App.js file
+    props.onAddUser(enterdUsername, enterdAge);
+
     // Clear Input
     setEnterdUsername("");
     setEnterdAge("");

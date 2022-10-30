@@ -1,12 +1,11 @@
 import styles from "./CourseList.module.css";
-import CourseItem from "./CourseItem";
 
 const CourseList = (props) => {
   return (
     <div className={styles.users}>
       <ul>
         {props.users.map((user) => (
-          <li>
+          <li key={user.id}>
             {user.name} ({user.age} years old)
           </li>
         ))}
