@@ -6,14 +6,23 @@ import { useState } from "react";
 const CourseInput = (props) => {
   const [enterdUsername, setEnterdUsername] = useState("");
   const [enterdAge, setEnterdAge] = useState("");
+  const [error, setError] = useState()
 
   const addUserHandler = (event) => {
     event.preventDefault();
     // Input validation
     if (enterdUsername.trim().length === 0 || enterdAge.trim().length === 0) {
+      setError({
+        title: "Invalid input",
+        message: "Please enter a valid name and age (non empty value)"
+      })
       return;
     }
     if (+enterdAge < 1) {
+      setError({
+        title: "Invalid age",
+        message: "Please enter a valid age (> 0)"
+      })
       return;
     }
 
@@ -35,7 +44,7 @@ const CourseInput = (props) => {
 
   return (
     <>
-      <ErrorModal title="An error occured" message="Something went wrong" />
+      {error && <ErrorModal title={error.title} message={error.message} />}
       <form onSubmit={addUserHandler}>
         <div className={styles.form_control}>
           <label htmlFor="username">Username</label>
