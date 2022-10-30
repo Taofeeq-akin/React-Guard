@@ -1,5 +1,6 @@
 import styles from "./CourseInput.module.css";
 import Button from "../UI/Button";
+import ErrorModal from "../UI/ErrorModal";
 import { useState } from "react";
 
 const CourseInput = (props) => {
@@ -33,27 +34,30 @@ const CourseInput = (props) => {
   };
 
   return (
-    <form onSubmit={addUserHandler}>
-      <div className={styles.form_control}>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          value={enterdUsername}
-          id="username"
-          onChange={usernameChangeHandler}
-        />
-      </div>
-      <div className={styles.form_control}>
-        <label htmlFor="age">Age (Years) </label>
-        <input
-          type="number"
-          value={enterdAge}
-          id="age"
-          onChange={ageChangeHandler}
-        />
-      </div>
-      <Button type="submit">Add User</Button>
-    </form>
+    <>
+      <ErrorModal title="An error occured" message="Something went wrong" />
+      <form onSubmit={addUserHandler}>
+        <div className={styles.form_control}>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            value={enterdUsername}
+            id="username"
+            onChange={usernameChangeHandler}
+          />
+        </div>
+        <div className={styles.form_control}>
+          <label htmlFor="age">Age (Years) </label>
+          <input
+            type="number"
+            value={enterdAge}
+            id="age"
+            onChange={ageChangeHandler}
+          />
+        </div>
+        <Button type="submit">Add User</Button>
+      </form>
+    </>
   );
 };
 
