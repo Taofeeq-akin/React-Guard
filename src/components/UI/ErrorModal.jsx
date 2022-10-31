@@ -1,9 +1,15 @@
+import ReactDOM from "react-dom";
+
 import styles from "./ErrorModal.module.css";
 import Button from "./Button";
 
 const ErrorModal = (props) => {
-  return (
-    <div className={styles.backdrop} onClick={props.onClear}>
+  const Backdrop = () => {
+    return <div className={styles.backdrop} onClick={props.onClear}></div>;
+  };
+
+  const ModalOverlay = () => {
+    return (
       <div className={`${styles.container} ${styles.modal}`}>
         <header className={styles.header}>
           <h2>{props.title}</h2>
@@ -15,7 +21,24 @@ const ErrorModal = (props) => {
           <Button onClick={props.onClear}>Okay</Button>
         </footer>
       </div>
-    </div>
+    );
+  };
+
+  return (
+    <>
+      {ReactDOM.createPortal(
+        <Backdrop onClear={props.onClear} />,
+        document.getElementById("backdrop-root")
+      )}
+      {ReactDOM.createPortal(
+        <ModalOverlay
+          title={props.title}
+          message={props.message}
+          onClear={props.onClear}
+        />,
+        document.getElementById("modalOverlay-root")
+      )}
+    </>
   );
 };
 

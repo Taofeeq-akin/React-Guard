@@ -19,12 +19,12 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <div className={styles.user_details}>
         <CourseInput onAddUser={addUserHandler} />
       </div>
       <CourseList users={usersLists} />
-    </div>
+    </>
   );
 }
 
