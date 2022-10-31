@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import CourseInput from "./components/CourseGoal/CourseInput";
-import CourseList from "./components/CourseGoal/CourseList";
+import React, { useState } from 'react';
 
-import styles from "./App.module.css";
+import Login from './components/Login/Login';
+import Home from './components/Home/Home';
+import MainHeader from './components/MainHeader/MainHeader';
 
 function App() {
-  // need to put in array cus we want to map through
-  const [usersLists, setUsersList] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  //  this for lifting up from child to parent
-  const addUserHandler = (uName, uAge) => {
-    setUsersList((prevList) => {
-      return [
-        ...prevList,
-        { name: uName, age: uAge, id: Math.random().toString() },
-      ];
-    });
+  const loginHandler = (email, password) => {
+    // We should of course check email and password
+    // But it's just a dummy/ demo anyways
+    setIsLoggedIn(true);
+  };
+
+  const logoutHandler = () => {
+    setIsLoggedIn(false);
   };
 
   return (
-    <>
-      <div className={styles.user_details}>
-        <CourseInput onAddUser={addUserHandler} />
-      </div>
-      <CourseList users={usersLists} />
-    </>
+    <React.Fragment>
+      <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
+      <main>
+        {!isLoggedIn && <Login onLogin={loginHandler} />}
+        {isLoggedIn && <Home onLogout={logoutHandler} />}
+      </main>
+    </React.Fragment>
   );
 }
 
