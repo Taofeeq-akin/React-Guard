@@ -28,3 +28,7 @@ working with fragment, can be used in 3 ways
 
 /////////
 Working with portals, for positioning the interface codes like overlay not being the same element tag with normal content display
+
+///////
+Working with useRef instead of useState
+will return an object with key of current and value properties as value
