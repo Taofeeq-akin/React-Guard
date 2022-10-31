@@ -12,9 +12,19 @@ const Login = (props) => {
   const [formIsValid, setFormIsValid] = useState(false);
 
   useEffect(() => {
-    setFormIsValid(
-      enteredEmail.includes("@") && enteredPassword.trim().length > 6
-    );
+    const identifier = setTimeout(() => {
+      console.log("checking validation")
+      setFormIsValid(
+        enteredEmail.includes("@") && enteredPassword.trim().length > 6
+      );
+    }, 500);
+
+    // for clean up to avoid uncessary traffick
+    return () => {
+      console.log('clean')
+      clearTimeout(identifier)
+    }
+
   }, [enteredEmail, enteredPassword]); // dependecies will onlu allows useEffect run if there have been any changes in any of the variables passed in it.
 
   const emailChangeHandler = (event) => {
