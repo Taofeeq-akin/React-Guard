@@ -45,21 +45,24 @@ const Login = (props) => {
     isValid: null,
   });
 
-  // useEffect(() => {
-  //   // Using timer for debouncing (min stop after each keystroke)
-  //   const identifier = setTimeout(() => {
-  //     // console.log("checking validation");
-  //     setFormIsValid(
-  //       enteredEmail.includes("@") && enteredPassword.trim().length > 6
-  //     );
-  //   }, 500);
+  // set this for useEffect to run only if they are valid 
+  //  pass specific properties instead of the entire object as a dependency.
+  const { isValid: emailIsValid } = emailState;
+  const { isValid: passwordIsValid } = passwordState;
 
-  //   // for clean up to avoid uncessary traffick and will run before side effect only after the first run up
-  //   return () => {
-  //     // console.log("clean");
-  //     clearTimeout(identifier);
-  //   };
-  // }, [enteredEmail, enteredPassword]); // dependecies will onlu allows useEffect run if there have been any changes in any of the variables passed in it.
+  useEffect(() => {
+    // Using timer for debouncing (min stop after each keystroke)
+    const identifier = setTimeout(() => {
+      console.log("checking validation");
+      setFormIsValid(emailIsValid && passwordIsValid);
+    }, 500);
+
+    // for clean up to avoid uncessary traffick and will run before side effect only after the first run up
+    return () => {
+      console.log("clean");
+      clearTimeout(identifier);
+    };
+  }, [emailIsValid, passwordIsValid]); // dependecies will onlu allows useEffect run if there have been any changes in any of the variables passed in it.
 
   const emailChangeHandler = (event) => {
     // setEnteredEmail(event.target.value);
@@ -67,7 +70,8 @@ const Login = (props) => {
     // to trigger new action
     dispatchEmail({ type: "USER_INPUT", val: event.target.value });
 
-    setFormIsValid(emailState.isValid && passwordState.isValid);
+    // to afford state inside a state we go back to use useEffect
+    // setFormIsValid(emailState.isValid && passwordState.isValid);
   };
 
   const passwordChangeHandler = (event) => {
@@ -75,7 +79,7 @@ const Login = (props) => {
 
     dispatchPassword({ type: "USER_INPUT", val: event.target.value });
 
-    setFormIsValid(emailState.isValid && passwordState.isValid);
+    // setFormIsValid(emailState.isValid && passwordState.isValid);
   };
 
   const validateEmailHandler = () => {
