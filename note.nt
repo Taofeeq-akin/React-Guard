@@ -19,3 +19,16 @@ Avoiding using same class name or id twice
 
 //////////
 Using react developer tools: Extensuin f0r debugging
+
+/////////////
+working with fragment, can be used in 3 ways 
+1) React.fragment
+2) Fragmant but wil import fragment from react
+3) Using empty element tag (<> </>)
+
+/////////
+Working with portals, for positioning the interface codes like overlay not being the same element tag with normal content display
+
+///////
+Working with useRef instead of useState
+will return an object with key of current and value properties as value
