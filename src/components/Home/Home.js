@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <Card className={classes.home}>
       <h1>Welcome back!</h1>
-      <Button onClick={authCtx.onLogout}></Button>
+      <Button onClick={authCtx.onLogout}>Logout</Button>
     </Card>
   );
 };

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const AuthContext = React.createContext({
   isLoggedIn: false,
   onLogout: () => {},
-  onLongin: (email, password) => {},
+  onLogin: (email, password) => {},
 });
 
 export const AuthContextProvider = (props) => {
@@ -34,7 +34,7 @@ export const AuthContextProvider = (props) => {
       value={{
         isLoggedIn: isLoggedIn,
         onLogout: logoutHandler,
-        onLongin: loginHandler,
+        onLogin: loginHandler,
       }}
     >
       {props.children}
