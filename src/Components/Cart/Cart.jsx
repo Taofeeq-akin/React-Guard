@@ -17,15 +17,14 @@ const Cart = (props) => {
   // };
 
   return (
-    // {error}
-    <Modal>
+    <Modal onClear={props.onClear}>
       {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>
         <span>35.21</span>
       </div>
       <div className={classes["actions"]}>
-        <button className={classes["button--alt"]}>Close</button>
+        <button className={classes["button--alt"]} onClick={props.onClear}>Close</button>
         <button className={classes.button}>Order</button>
       </div>
     </Modal>
