@@ -10,7 +10,7 @@ const carRudcer = (state, action) => {
   if (action.type === "ADD") {
     const updateItem = state.items.concat(action.item);
     const updateTotalAmount =
-      state.totalAmount * action.item.price * action.item.amount;
+      state.totalAmount + action.item.price * action.item.amount;
     return {
       items: updateItem,
       totalAmount: updateTotalAmount,
