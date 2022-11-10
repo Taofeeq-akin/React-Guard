@@ -1,4 +1,5 @@
-import classes from "./Cart.odule.css";
+import Modal from "./Modal";
+import classes from "./Cart.module.css";
 
 const Cart = (props) => {
   const cartItems = (
@@ -9,10 +10,17 @@ const Cart = (props) => {
     </ul>
   );
 
+  // const [error, setError] = useState();
+
+  // const errorHandler = () => {
+  //   setError(null);
+  // };
+
   return (
-    <div>
+    // {error}
+    <Modal>
       {cartItems}
-      <div>
+      <div className={classes.total}>
         <span>Total Amount</span>
         <span>35.21</span>
       </div>
@@ -20,7 +28,7 @@ const Cart = (props) => {
         <button className={classes["button--alt"]}>Close</button>
         <button className={classes.button}>Order</button>
       </div>
-    </div>
+    </Modal>
   );
 };
 
