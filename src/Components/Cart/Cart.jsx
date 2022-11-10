@@ -1,3 +1,4 @@
+import React from "react";
 import Modal from "./Modal";
 import classes from "./Cart.module.css";
 
@@ -24,7 +25,9 @@ const Cart = (props) => {
         <span>35.21</span>
       </div>
       <div className={classes["actions"]}>
-        <button className={classes["button--alt"]} onClick={props.onClear}>Close</button>
+        <button className={classes["button--alt"]} onClick={props.onClear}>
+          Close
+        </button>
         <button className={classes.button}>Order</button>
       </div>
     </Modal>
