@@ -1,0 +1,7 @@
+React memo will prevent child components from runing unnecessery if no changes from it 
+// but does not work for object cus comparing 2 object will always give force even if they are the same
+
+// so in order to make memo works for object comparing we have to use useCallBack hook to save previous state to reuse it since it wont be chaging it will have empty array dependency as the second parameter
+
+//useMemo hook allows us to store any kind of data (Which is memoize) 
+will take 2 parameter: 1, a function that will return what we want to save... 2, dependency of state or props used inside the function just like useContext.
