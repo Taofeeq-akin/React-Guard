@@ -20,25 +20,27 @@ function App() {
   // ];
 
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Using fetch to connect to backend api
-  function fetchMoviesHandler() {
-    fetch("https://swapi.dev/api/films/")
-      .then((respond) => {
-        return respond.json();
-      })
-      .then((data) => {
-        // Transforming key name to props name used in my movieList
-        const transformedMovies = data.results.map((moviesData) => {
-          return {
-            id: moviesData.episode_id,
-            title: moviesData.title,
-            releaseDate: moviesData.release_Date,
-            openingText: moviesData.opening_crawl,
-          };
-        });
-        setMovies(transformedMovies);
-      });
+  async function fetchMoviesHandler() {
+    setIsLoading(true);
+    // but since fetch will return promise i will use async function
+    const respond = await fetch("https://swapi.dev/api/films/");
+
+    const data = await respond.json();
+
+    // Transforming key name to props name used in my movieList
+    const transformedMovies = data.results.map((moviesData) => {
+      return {
+        id: moviesData.episode_id,
+        title: moviesData.title,
+        releaseDate: moviesData.release_Date,
+        openingText: moviesData.opening_crawl,
+      };
+    });
+    setMovies(transformedMovies);
+    setIsLoading(false);
   }
 
   return (
@@ -47,7 +49,9 @@ function App() {
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>
       </section>
       <section>
-        <MoviesList movies={movies} />
+        {!isLoading && movies.length > 0 && <MoviesList movies={movies} />}
+        {!isLoading && movies.length === 0 && <p>Found no movie yet.</p>}
+        {isLoading && <p>Loading...</p>}
       </section>
     </React.Fragment>
   );
