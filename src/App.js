@@ -38,8 +38,19 @@ function App() {
           releaseDate: data[key].releaseDate,
         });
       }
-      // Transforming key name to props name used in my movieList
 
+      // fetch get data from swapi api
+
+      // Transforming key name to props name used in my movieList
+      // const moviesLoaded = data.result.map((movieData) => {
+      //   return {
+      //     title: movieData.title,
+      //     id: movieData.episode_id,
+      //     releasedDate: releaseDate.release_date,
+      //   };
+      // });
+
+      // setMovies(moviesLoaded)
       setMovies(loadedMovies);
     } catch (error) {
       setError(error.message);
