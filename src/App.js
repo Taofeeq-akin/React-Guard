@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import MoviesList from "./components/MoviesList";
 import "./App.css";
@@ -24,7 +24,9 @@ function App() {
   const [error, setError] = useState(null);
 
   // Using fetch to connect to backend api
-  async function fetchMoviesHandler() {
+  // will use callBack cus fetchMoviesHandler will give infinite loop in useEffect
+
+  const fetchMoviesHandler = useCallback(async () => {
     setIsLoading(true);
     setError(null);
 
@@ -52,7 +54,12 @@ function App() {
       setError(error.message);
     }
     setIsLoading(false);
-  }
+  }, []);
+
+  // Will need useEffect cus fetch also gives a side effect
+  useEffect(() => {
+    fetchMoviesHandler();
+  }, [fetchMoviesHandler]);
 
   let content = <p>Found no movie yet.</p>;
   if (movies.length > 0) content = <MoviesList movies={movies} />;

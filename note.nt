@@ -32,3 +32,7 @@ Working with portals, for positioning the interface codes like overlay not being
 ///////
 Working with useRef instead of useState
 will return an object with key of current and value properties as value
+
+
+//////////////////////////
+useCallback can be used on useEffect to stop infinte loop
