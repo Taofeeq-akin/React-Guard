@@ -1,24 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 
 import MoviesList from "./components/MoviesList";
+import AddMovie from "./components/AddMovie";
 import "./App.css";
 
 function App() {
-  // const dummyMovies = [
-  //   {
-  //     id: 1,
-  //     title: 'Some Dummy Movie',
-  //     openingText: 'This is the opening text of the movie',
-  //     releaseDate: '2021-05-18',
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Some Dummy Movie 2',
-  //     openingText: 'This is the second opening text of the movie',
-  //     releaseDate: '2021-05-19',
-  //   },
-  // ];
-
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -32,24 +18,29 @@ function App() {
 
     try {
       // but since fetch will return promise i will use async function
-      const respond = await fetch("https://swapi.dev/api/vehicles/");
-      // Changed from films to vehicles
+      const respond = await fetch(
+        "https://react-movie-http-8779a-default-rtdb.firebaseio.com/movies.json"
+      ); // Added movie.json cus it have to be addded wen using firbase
 
       if (!respond.ok) {
         throw new Error("Something went wrong");
       }
       const data = await respond.json();
 
+      const loadedMovies = [];
+
+      // i use for loop cus data return an object
+      for (const key in data) {
+        loadedMovies.push({
+          id: key,
+          title: data[key].title,
+          openingText: data[key].openingText,
+          releaseDate: data[key].releaseDate,
+        });
+      }
       // Transforming key name to props name used in my movieList
-      const transformedMovies = data.results.map((moviesData) => {
-        return {
-          id: moviesData.model,
-          title: moviesData.name,
-          releaseDate: moviesData.cargo_capacity,
-          openingText: moviesData.manufacturer,
-        };
-      });
-      setMovies(transformedMovies);
+
+      setMovies(loadedMovies);
     } catch (error) {
       setError(error.message);
     }
@@ -61,6 +52,24 @@ function App() {
     fetchMoviesHandler();
   }, [fetchMoviesHandler]);
 
+  const addMoviesHandler = async (movie) => {
+    // Fetch can also be used to send data
+    const response = await fetch(
+      "https://react-movie-http-8779a-default-rtdb.firebaseio.com/movies.json",
+      {
+        // use to configure the out going effect
+        method: "POST",
+        body: JSON.stringify(movie), // use JSON object cus body want what its taking in json format
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    fetchMoviesHandler();
+  };
+
   let content = <p>Found no movie yet.</p>;
   if (movies.length > 0) content = <MoviesList movies={movies} />;
   if (error) content = <p>{error}</p>;
@@ -68,6 +77,9 @@ function App() {
 
   return (
     <React.Fragment>
+      <section>
+        <AddMovie onAddMovie={addMoviesHandler} />
+      </section>
       <section>
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>
       </section>
