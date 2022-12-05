@@ -38,3 +38,7 @@ will return an object with key of current and value properties as value
 useCallback can be used on useEffect to stop infinte loop
 
 
+//////////////////////////////////
+BUILDING CUSTOM REACT hook
+
+it allows other hooks to be call inside it function and it function name must start wit ( use ) e.g use counter
