@@ -34,6 +34,23 @@ Working with useRef instead of useState
 will return an object with key of current and value properties as value
 
 
+///////////////////////////
+Advance handling using
+1) useEffect
+2) useReducer
+3) useContext
+
+///////////////////////////////
+1) Using useImperativeHandler: Allows variables in the same component to reused unlike props.
+2) React.forward: to make ref value available on other component mostly for focusing on inputs
+3) React.memo: allows optimization of components to avoid re-rendering of child component in parent component but those works for object so useCallback have to used to allow that.
+
+////////////////////////////////////////
+class-based components 
+
+//////////////////////////////////////
+using try catch in sending http request along side using useEffect and useCallback.
+
 //////////////////////////
 useCallback can be used on useEffect to stop infinte loop
 
@@ -41,4 +58,4 @@ useCallback can be used on useEffect to stop infinte loop
 //////////////////////////////////
 BUILDING CUSTOM REACT hook
 
-it allows other hooks to be call inside it function and it function name must start wit ( use ) e.g useCounter
+it allows other hooks to be call inside it function and it function name must start wit ( use ) e.g useCounter.
