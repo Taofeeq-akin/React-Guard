@@ -58,4 +58,4 @@ useCallback can be used on useEffect to stop infinte loop
 //////////////////////////////////
 BUILDING CUSTOM REACT hook
 
-it allows other hooks to be call inside it function and it function name must start wit ( use ) e.g useCounter.
+it just a normal function that allows other hooks to be call inside it function and it function name must start wit ( use ) e.g useCounter.
