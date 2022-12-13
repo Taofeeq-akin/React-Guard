@@ -21,10 +21,10 @@ function App() {
     };
 
     fetchTasks(
-      "https://usecustom-6c81f-default-rtdb.firebaseio.com/tasks.json",
+      { url: "https://usecustom-6c81f-default-rtdb.firebaseio.com/tasks.json" },
       transformTasks
     );
-  }, [fetchTasks]);
+  }, []);
 
   const taskAddHandler = (task) => {
     setTasks((prevTasks) => prevTasks.concat(task));
