@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-const useHttp = (httpsUrl, applyTask) => {
+const useHttp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const sendRequest = async () => {
+  // Using usecallback to prevent useEffect in app.js from re-running always
+  const sendRequest = async (httpsUrl, applyTask) => {
     setIsLoading(true);
     setError(null);
     try {
