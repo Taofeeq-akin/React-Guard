@@ -1,29 +1,34 @@
-import { useRef } from "react";
+// import { useRef } from "react";
 import { useState } from "react";
 
 const SimpleInput = (props) => {
   const [enteredName, setEnteredName] = useState("");
-  const nameInputRef = useRef();
-  const [enteredInputIsValid, setEnteredInputIsValid] = useState(false);
+
+  // const nameInputRef = useRef();
+  // const [enteredInputIsValid, setEnteredInputIsValid] = useState(false);
+
   // To prevent enteredInputIsValid running whenever the page relaod even with empty input value
   const [enteredInputTouched, setEnteredInputTouched] = useState(false);
+
+  const enteredInputIsValid = enteredName.trim() !== "";
+  const nameInputIsInvalid = !enteredInputIsValid && enteredInputTouched;
 
   const inputEnteredHandler = (event) => {
     setEnteredName(event.target.value);
 
-    // remove error on stroke
-    if (event.target.value.trim() !== "") {
-      setEnteredInputIsValid(true);
-    }
+    // remove error on keyStroke
+    // if (event.target.value.trim() !== "") {
+    //   setEnteredInputIsValid(true);
+    // }
   };
 
   // Hnadling on lost focus
   const nameInputBlurHandler = (event) => {
     setEnteredInputTouched(true);
 
-    if (enteredName.trim() === "") {
-      setEnteredInputIsValid(false);
-    }
+    // if (enteredName.trim() === "") {
+    //   setEnteredInputIsValid(false);
+    // }
   };
 
   const formSubmissionHandler = (event) => {
@@ -31,25 +36,26 @@ const SimpleInput = (props) => {
 
     setEnteredInputTouched(true);
 
-    if (enteredName.trim() === "") {
-      setEnteredInputIsValid(false);
+    if (!enteredInputIsValid) {
+      // setEnteredInputIsValid(false);
       return;
     }
 
-    setEnteredInputIsValid(true);
-
-    const enteredValue = nameInputRef.current.value;
-    console.log(enteredValue);
+    // setEnteredInputIsValid(true);
 
     // TO clear value input after submit
     setEnteredName("");
+
+    // To reset touch after submit
+    setEnteredInputTouched(false);
+
+    // const enteredValue = nameInputRef.current.value;
+    // console.log(enteredValue);
 
     // can also be done like while using useRef  --But not reallly adviceable
     // nameInputRef.current.value = "";
     console.log(enteredName);
   };
-
-  const nameInputIsInvalid = !enteredInputIsValid && enteredInputTouched;
 
   const nameInputClasses = nameInputIsInvalid
     ? "form-control invalid"
@@ -60,7 +66,7 @@ const SimpleInput = (props) => {
       <div className={nameInputClasses}>
         <label htmlFor="name">Your Name</label>
         <input
-          ref={nameInputRef}
+          // ref={nameInputRef}
           type="text"
           id="name"
           onChange={inputEnteredHandler}
