@@ -1,7 +1,11 @@
+// import { useRef } from "react";
 import { useState } from "react";
 
 const SimpleInput = (props) => {
   const [enteredName, setEnteredName] = useState("");
+
+  // const nameInputRef = useRef();
+  // const [enteredNameIsvalid, setenteredNameIsvalid] = useState(false);
 
   // To prevent enteredNameIsvalid running whenever the page relaod even with empty input value
   const [enteredNameTouched, setenteredNameTouched] = useState(false);
@@ -18,11 +22,20 @@ const SimpleInput = (props) => {
 
   const inputEnteredHandler = (event) => {
     setEnteredName(event.target.value);
+
+    // remove error on keyStroke
+    // if (event.target.value.trim() !== "") {
+    //   setenteredNameIsvalid(true);
+    // }
   };
 
   // Hnadling on lost focus
   const nameInputBlurHandler = (event) => {
     setenteredNameTouched(true);
+
+    // if (enteredName.trim() === "") {
+    //   setenteredNameIsvalid(false);
+    // }
   };
 
   const formSubmissionHandler = (event) => {
@@ -31,8 +44,11 @@ const SimpleInput = (props) => {
     setenteredNameTouched(true);
 
     if (!enteredNameIsvalid) {
+      // setenteredNameIsvalid(false);
       return;
     }
+
+    // setenteredNameIsvalid(true);
 
     // TO clear value input after submit
     setEnteredName("");
@@ -40,6 +56,11 @@ const SimpleInput = (props) => {
     // To reset touch after submit
     setenteredNameTouched(false);
 
+    // const enteredValue = nameInputRef.current.value;
+    // console.log(enteredValue);
+
+    // can also be done like while using useRef  --But not reallly adviceable
+    // nameInputRef.current.value = "";
     console.log(enteredName);
   };
 
@@ -52,6 +73,7 @@ const SimpleInput = (props) => {
       <div className={nameInputClasses}>
         <label htmlFor="name">Your Name</label>
         <input
+          // ref={nameInputRef}
           type="text"
           id="name"
           onChange={inputEnteredHandler}
