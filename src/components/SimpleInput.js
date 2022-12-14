@@ -18,7 +18,7 @@ const SimpleInput = (props) => {
       return;
     }
 
-    enteredInputIsValid(true);
+    setEnteredInputIsValid(true);
 
     const enteredValue = nameInputRef.current.value;
     console.log(enteredValue);
