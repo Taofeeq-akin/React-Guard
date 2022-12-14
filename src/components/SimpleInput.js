@@ -29,7 +29,7 @@ const SimpleInput = (props) => {
   const formSubmissionHandler = (event) => {
     event.preventDefault();
 
-    if (!enteredNameIsvalid) {
+    if (!enteredNameIsvalid || !enteredEmailIsvalid) {
       return;
     }
 
@@ -39,10 +39,13 @@ const SimpleInput = (props) => {
     console.log(enteredName);
   };
 
-  const nameInputClasses =
-    nameInputHasError || emailInputHasError
-      ? "form-control invalid"
-      : "form-control";
+  const nameInputClasses = nameInputHasError
+    ? "form-control invalid"
+    : "form-control";
+
+  const emailInputClasses = emailInputHasError
+    ? "form-control invalid"
+    : "form-control";
 
   return (
     <form onSubmit={formSubmissionHandler}>
@@ -57,7 +60,7 @@ const SimpleInput = (props) => {
         />
         {nameInputHasError && <p className="error-text">Input your name.</p>}
       </div>
-      <div className={nameInputClasses}>
+      <div className={emailInputClasses}>
         <label htmlFor="email">Your Emailaddress</label>
         <input
           type="text"
