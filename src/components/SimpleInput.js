@@ -31,9 +31,13 @@ const SimpleInput = (props) => {
     console.log(enteredName);
   };
 
+  const nameInputClasses = enteredInputIsValid
+    ? "form-control"
+    : "form-control invalid";
+
   return (
     <form onSubmit={formSubmissionHandler}>
-      <div className="form-control">
+      <div className={nameInputClasses}>
         <label htmlFor="name">Your Name</label>
         <input
           ref={nameInputRef}
