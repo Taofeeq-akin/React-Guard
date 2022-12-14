@@ -10,14 +10,19 @@ const SimpleInput = (props) => {
 
   const inputEnteredHandler = (event) => {
     setEnteredName(event.target.value);
+
+    // remove error on stroke
+    if (event.target.value.trim() !== "") {
+      setEnteredInputIsValid(true);
+    }
   };
 
+  // Hnadling on lost focus
   const nameInputBlurHandler = (event) => {
     setEnteredInputTouched(true);
 
     if (enteredName.trim() === "") {
       setEnteredInputIsValid(false);
-      return;
     }
   };
 
