@@ -4,6 +4,7 @@ import { useState } from "react";
 const SimpleInput = (props) => {
   const [enteredName, setEnteredName] = useState("");
   const nameInputRef = useRef();
+  const [enteredInputIsValid, setEnteredInputIsValid] = useState(true);
 
   const inputEnteredHandler = (event) => {
     setEnteredName(event.target.value);
@@ -11,6 +12,13 @@ const SimpleInput = (props) => {
 
   const formSubmissionHandler = (event) => {
     event.preventDefault();
+
+    if (enteredName.trim() === "") {
+      setEnteredInputIsValid(false);
+      return;
+    }
+
+    enteredInputIsValid(true);
 
     const enteredValue = nameInputRef.current.value;
     console.log(enteredValue);
@@ -34,6 +42,7 @@ const SimpleInput = (props) => {
           onChange={inputEnteredHandler}
           value={enteredName}
         />
+        {!enteredInputIsValid && <p className="error-text">Input your name.</p>}
       </div>
       <div className="form-actions">
         <button>Submit</button>
