@@ -30,3 +30,5 @@ yarn-error.log*
 /10-Advance-Handling
 /11-food-order-app
 /12-react-behind-scenes
+/14-sending-http-request-&-connecting-to-a-database
+/13-class-base-component-error-boundary
