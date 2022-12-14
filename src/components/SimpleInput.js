@@ -13,6 +13,13 @@ const SimpleInput = (props) => {
   const enteredInputIsValid = enteredName.trim() !== "";
   const nameInputIsInvalid = !enteredInputIsValid && enteredInputTouched;
 
+  // Managing overall form validation by disabling te botton
+  let formIsValid = false;
+
+  if (enteredInputIsValid) {
+    formIsValid = true;
+  }
+
   const inputEnteredHandler = (event) => {
     setEnteredName(event.target.value);
 
@@ -76,7 +83,7 @@ const SimpleInput = (props) => {
         {nameInputIsInvalid && <p className="error-text">Input your name.</p>}
       </div>
       <div className="form-actions">
-        <button>Submit</button>
+        <button disabled={!formIsValid}>Submit</button>
       </div>
     </form>
   );
